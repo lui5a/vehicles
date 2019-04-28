@@ -1,0 +1,141 @@
+<head>
+   <link rel="stylesheet" type="text/css" href="styles.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <script src="../models/car.js"></script>
+   <script src="../models/wheel.js"></script>
+   <script src="../controllers/controller.js"></script>
+   <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700" rel="stylesheet">
+</head>
+<body id="allbody" class="container-fluid">
+   <!--     <p id="carInfo"></p>
+      <button onclick="createCar('1212SDS','SEAT','ROJO')">Create car</button>
+      <div>
+          <p id="testOutput">Output</p> 
+      </div> -->
+   <div class="container">
+      <div class="row">
+      <h1 class="text-left text-color2">Register Car Details</h1>
+      <img class="px-3 pb-2" src="imgs/Car key-01.svg" style="max-width: 100px;">
+      
+      </div>
+      <div id="create-car-form" class="container">
+         <div class="row">
+            <div class="col form-group">
+               <label class="text-color2" for="plateInput">Plate</label>
+               <input type="text" class="form-control" id="plateInput" placeholder="ex:1234ABC" >
+            </div>
+            <div class="col form-group">
+               <label class="text-color2" for="brandInput">Brand</label>
+               <input type="text" class="form-control" id="brandInput" placeholder="ex:Seat">
+            </div>
+            <div class="col form-group">
+               <label class="text-color2" for="colorInput">Color</label>
+               <input type="text" class="form-control" id="colorInput" placeholder="ex:Black">
+            </div>
+         </div>
+         <div class="row">
+            <div class="col form-group">
+               <button type="submit" class="btn bg-color1 text-color3 mb-2"onclick="submitCar()">Create Car</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div id="create-wheel-form" class="container" style="display: none;">
+      <div class="row">
+         <div class="col form-group">
+            <label class="text-color2" for="brandWheel1Input">Front Left Brand</label>
+            <input type="text" class="form-control" id="brandWheel1Input" >
+         </div>
+         <div class="col form-group">
+            <label class="text-color2" for="diameterWheel1Input">Front Left Diameter</label>
+            <input type="text" class="form-control" id="diameterWheel1Input">
+         </div>
+         <div class="col form-group">
+            <label class="text-color2" for="brandWheel2Input">Front Right Brand</label>
+            <input type="text" class="form-control" id="brandWheel2Input" >
+         </div>
+         <div class="col form-group">
+            <label class="text-color2" for="diameterWheel2Input">Front Right Diameter</label>
+            <input type="text" class="form-control" id="diameterWheel2Input">
+         </div>
+      </div>
+      <div class="row">
+         <div class="col form-group">
+            <label class="text-color2" for="brandWheel3Input">Back Left Brand</label>
+            <input type="text" class="form-control" id="brandWheel3Input" >
+         </div>
+         <div class="col form-group">
+            <label class="text-color2" for="diameterWheel3Input">Back Left Diameter</label>
+            <input type="text" class="form-control" id="diameterWheel3Input">
+         </div>
+         <div class="col form-group">
+            <label class="text-color2" for="brandWheel4Input">Back Right Brand</label>
+            <input type="text" class="form-control" id="brandWheel4Input" >
+         </div>
+         <div class="col form-group">
+            <label class="text-color2" for="diameterWheel4Input">Back Right Diameter</label>
+            <input type="text" class="form-control" id="diameterWheel4Input">
+         </div>
+      </div>
+      <div class="row">
+         <div class="col form-group">
+            <button type="submit" class="btn bg-color1 text-color3 mb-2"onclick="submitWheelForm()">Add Wheels</button>
+         </div>
+      </div>
+   </div>
+   <div id="result-car-form" class="container-fluid bg-color1 mt-5">
+      <div class="container py-5">
+      <div class="row ">
+         <div class=" col create-car-output">
+            <h2 class="text-color2" id="carTitle"></h2>
+         </div>
+      </div>
+      <div class="row">
+         <div class=" col create-car-output">
+            <h6 class="text-color2">Plate:<h6> 
+            <p class="text-color4" id="plateOutput">
+            <p> 
+         </div>
+         <div class=" col create-car-output">
+            <h6 class="text-color2">Brand:<h6> 
+            <p class="text-color4" id="brandOutput"></p>
+         </div>
+         <div class=" col create-car-output">
+            <h6 class="text-color2">Color:<h6> 
+            <p class="text-color4" id="colorOutput"></p>
+         </div>
+         <div class=" col create-car-output"> </div>
+      </div>
+   </div>
+   
+   <div id="result-wheels-form" class="container py-5">
+      <div class="row">
+         <div class=" col create-car-output">
+            <h2 class="text-color2" id="wheelTitle"></h2>
+         </div>
+      </div>
+      <div class="row">
+         <div class=" col create-car-output">
+            <h6 class="text-color2">Front-Left<h6> 
+            <p class="text-color4" id="wheelOutput1">
+            <p> 
+         </div>
+         <div class=" col create-car-output">
+            <h6 class="text-color2">Front-Right<h6> 
+            <p class="text-color4" id="wheelOutput2"></p>
+         </div>
+         <div class=" col create-car-output">
+            <h6 class="text-color2">Back-Left<h6> 
+            <p class="text-color4" id="wheelOutput3"></p>
+         </div>
+         <div class=" col create-car-output">
+            <h6 class="text-color2">Back-Right<h6> 
+            <p class="text-color4"id="wheelOutput4"></p>
+         </div>
+      </div>
+   </div>
+
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
